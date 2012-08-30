@@ -1,0 +1,75 @@
+/* media page */
+
+.focused {
+	z-index: 1000;
+}
+
+.status {
+	position: absolute;
+	bottom: 4px;
+	right:8px;
+	font-size:1.4em;
+	color:#ccc;
+	text-align:right;
+}
+
+.status a:link,
+.status a:visited {
+	font-size:0.7em;
+	text-decoration:none;
+	color:#555;
+}
+.status a:focus,
+.status a:hover {
+	color:#D30076;
+	text-decoration:underline;
+}
+
+#display {
+	clear:both;
+	border:solid 1px #000;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: white;
+	overflow:hidden;
+	background-image: url(http://www.wikilovesmonuments.org/wp-content/themes/wlm/images/headers/wlm.png);
+	background-repeat: no-repeat;
+
+}
+
+#buttons {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+div {
+	position:absolute;
+}
+
+div img{
+	border-style:none;
+}
+
+/* polaroid styling */
+div.polaroid {
+	position:absolute;
+	padding: 10px;
+	box-shadow: 3px 3px 2px #EEE;
+	background-color: white;
+}
+
+div.polaroid a {
+	border-bottom:solid 3px transparent;
+}
+div.polaroid a:hover {
+	border-bottom:solid 3px #D30076;
+}
+div.polaroid img {
+	border: solid 2px black;
+	margin-bottom: 40px;
+}
+

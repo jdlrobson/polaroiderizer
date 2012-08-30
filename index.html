@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Wiki Loves Monuments Mobile Uploads</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<link rel="stylesheet" type="text/css" href="p.css">
+</head>
+<body>
+	<div id="display"></div>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="polaroiderizer.js"></script>
+	<script type="text/javascript">
+	function defaultSearch() {
+		polaroiderizer( $( '#display' ), {
+				iiurlwidth: '320px',
+				action: 'query',
+				gcmsort: 'timestamp', gcmdir: 'desc',
+				gcmlimit: 500, gcmtitle: 'Category:Mobile_upload',
+				generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url'
+			}, {
+				dropDelay: 3000,
+				source: 'commons',
+				foo: 'bar'
+			} );
+	}
+	$( '<div id="buttons">' ).appendTo( document.body );
+	$( '<button>' ).text( 'wlm:Mobile_Upload' ).click( function() {
+			defaultSearch();
+		} ).appendTo( '#buttons' );
+	$( '<button>' ).text( 'flickr:wikilovesmonuments' ).click( function() {
+			polaroiderizer( $( '#display' ), { 'tags': 'north korea' }, { source: 'flickr' } );
+		} ).appendTo( '#buttons' );
+	defaultSearch();
+	</script>
+</body>
+</html>
