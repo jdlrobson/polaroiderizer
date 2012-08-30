@@ -128,10 +128,12 @@ function getPhotos( $el, origData, options ) {
 			var photos = [];
 			$.each( data.query.pages, function( i, pic ) {
 				if ( pic.imageinfo && pic.imageinfo[ 0 ] ) {
+					var info = pic.imageinfo[ 0 ];
 					photos.push( {
 						src: pic.imageinfo[ 0 ].thumburl,
 						link: pic.imageinfo[ 0 ].descriptionurl,
-						title: pic.title
+						title: pic.title,
+						author: info.user ? 'by ' + info.user : ''
 					} );
 				}
 			} );
@@ -161,6 +163,7 @@ function getPhotos( $el, origData, options ) {
 			function loadNewImage() {
 				var a = $( '<a>' ).attr( 'href', $( this ).data( 'link' ) ).attr( 'target', '_BLANK' ).
 					append( $( this ).clone() );
+				$( '<span class="caption">' ).text( $( this ).data( 'author' ) ).appendTo( a );
 				displayQueue.push( a );
 			}
 			$el.find( '.status' ).html( 'Found some photos. Making a slideshow...' );
@@ -173,7 +176,7 @@ function getPhotos( $el, origData, options ) {
 				}
 				if ( !backlog[ photo.src ] ) {
 					backlog[ photo.src ] = true;
-					$('<img>' ).attr( 'src', photo.src ).data( 'link', photo.link ).attr( 'title', photo.title ).
+					$('<img>' ).attr( 'src', photo.src ).data( 'author', photo.author || '' ).data( 'link', photo.link ).attr( 'title', photo.title ).
 						load( loadNewImage ).
 						appendTo( $el.find( '.staging' ) );
 				}

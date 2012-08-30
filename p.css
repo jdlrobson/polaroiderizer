@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
+
 /* media page */
 
 .focused {
@@ -60,9 +62,25 @@ div.polaroid {
 	padding: 10px;
 	box-shadow: 3px 3px 2px #EEE;
 	background-color: white;
+	font-family: 'Reenie Beanie', cursive;
+	text-align: center;
+	max-width: 380px;
+}
+
+div.polaroid img {
+	max-width: 360px;
+}
+
+div.polaroid .caption {
+	display: block;
+	text-align: center;
+	font-size: 2em;
+	overflow: hidden;
+	color: #aaa;
 }
 
 div.polaroid a {
+	text-decoration: none;
 	border-bottom:solid 3px transparent;
 }
 div.polaroid a:hover {
