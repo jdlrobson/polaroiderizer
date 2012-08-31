@@ -48,7 +48,7 @@
 
 		for( i = 0; i < buttons.length; i++ ) {
 			button = buttons[ i ];
-			$( '<button>' ).data( 'data', {
+			$( '<button class="query">' ).data( 'data', {
 					iiurlwidth: '320px',
 					action: 'query',
 					gcmsort: 'timestamp', gcmdir: 'desc',
@@ -59,18 +59,26 @@
 					source: 'commons'
 				} ).text( button.label ).appendTo( $( '<li>' ).appendTo( '#buttons' ) );
 		}
+		
+		$( '<button class="colorChanger">' ).text( 'toggle background' ).appendTo( $( '<li>' ).appendTo( '#buttons' ) );
 
 	}());
 
 	// setup click handler
-	$( '#buttons button' ).click( function() {
-		$( '#buttons button' ).attr( 'disabled', false );
+	$( '#buttons button.query' ).click( function() {
+		$( '#buttons button.query' ).attr( 'disabled', false );
 		$( this ).attr( 'disabled', true );
 		var data = $( this ).data( 'data' );
 		var options = $( this ).data( 'options' );
 		polaroiderizer( $( '#display' ), data, options );
 	} );
 	$( '#buttons button' ).eq( 0 ).trigger( 'click' );
+	var bg = 'white';
+	$( '#buttons button.colorChanger' ).click( function() {
+		bg = bg === 'white' ? '#707070' : 'white';
+		$( '#display' ).css( 'background-color', bg );
+		$( this ).css( 'background-color', bg );
+	} );
 	</script>
 </body>
 </html>

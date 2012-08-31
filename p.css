@@ -44,7 +44,7 @@ a.googleplay img {
 	position: absolute;
 	left: 0;
 	right: 0;
-	background-color: #707070;
+	background-color: white;
 	overflow:hidden;
 	background-position: 80px 40px;
 	background-image: url(wlm-logo-full.png);
@@ -106,6 +106,17 @@ a.googleplay img {
 }
 #buttons button:disabled {
 	font-weight:bold;
+}
+
+#buttons button.colorChanger {
+	border: solid 1px black;
+	border-radius: 0;
+	width: 30px;
+	height: 30px;
+	text-indent: -999px;
+	overflow: hidden;
+	background-color: white;
+	cursor: pointer;
 }
 
 div {
