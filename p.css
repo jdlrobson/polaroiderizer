@@ -35,9 +35,9 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	background-color: white;
+	background-color: #E1E5F3;
 	overflow:hidden;
-	background-image: url(http://www.wikilovesmonuments.org/wp-content/themes/wlm/images/headers/wlm.png);
+	background-image: url(wlm-logo-full.png);
 	background-repeat: no-repeat;
 
 }
