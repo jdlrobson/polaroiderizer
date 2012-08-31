@@ -83,7 +83,7 @@ div.polaroid a {
 	text-decoration: none;
 	border-bottom:solid 3px transparent;
 }
-div.polaroid a:hover {
+div.polaroid:hover {
 	border-bottom:solid 3px #D30076;
 }
 div.polaroid img {
