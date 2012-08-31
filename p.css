@@ -66,6 +66,33 @@ a.googleplay img {
 	position: absolute;
 	top: 0;
 	right: 0;
+	text-align: center;
+	list-style: none;
+	min-width:300px;
+	margin:10px;
+}
+#buttons button {
+	width:100%;
+	opacity:0.9;
+	border:1px solid gray;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background:#E1E5F3;
+	margin-top:2px;
+	margin-bottom:2px;
+	padding:2px;
+	transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-webkit-transition:background-color 0.5s;
+}
+#buttons button:disabled, #buttons button:hover {
+	opacity:1;
+	background:#BFC3CF;
+	color:black;
+}
+#buttons button:disabled {
+	font-weight:bold;
 }
 
 div {
