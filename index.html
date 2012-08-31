@@ -83,13 +83,15 @@
 	for( var i = 0; i < 10; i++ ) {
 		pushRandomBackground();
 	}
-	var currentBg = 0;
+	var currentBg = backgrounds.length - 1;
 	$( '#buttons button.colorChanger' ).click( function() {
 		currentBg = currentBg === backgrounds.length - 1 ? 0 : currentBg + 1;
 		var bg = backgrounds[ currentBg ];
+		var nextBg = backgrounds[ currentBg === backgrounds.length - 1 ? 0 : currentBg + 1 ];
 		$( '#display' ).css( 'background-color', bg );
-		$( this ).css( 'background-color', bg );
+		$( this ).css( 'background-color', nextBg );
 	} );
+	$( '#buttons button.colorChanger' ).trigger( 'click' );
 	</script>
 </body>
 </html>
