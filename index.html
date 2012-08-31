@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="polaroiderizer.js"></script>
 	<script type="text/javascript">
 	(function() {
-		var button, i,
+		var button, i, countries,
 			buttons = [
 				{
 					category: 'Category:Images_from_Wiki_Loves_Monuments_2012', label: '2012'
@@ -35,7 +35,17 @@
 					label: '2010'
 				}
 			];
-		$( '<div id="buttons">' ).appendTo( document.body );
+		$( '<ul id="buttons">' ).appendTo( document.body );
+
+		// countrie specific
+		countries = [ 'Andorra', 'Argentina', 'Austria', 'Belarus', 'Belgium', 'Canada', 'Chile', 'Colombia', 'the Czech Republic', 'Denmark', 'Estonia', 'France', 'Germany', 'Ghana', 'India', 'Israel', 'Italy', 'Kenya', 'Liechtenstein', 'Luxembourg', 'Mexico', 'the Netherlands', 'Norway', 'Panama', 'the Philippines', 'Poland', 'Romania', 'Russia', 'Serbia', 'South Africa', 'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'the United States' ];
+		for ( i = 0; i < countries.length; i++ ) { 
+			buttons.push( {
+				category: 'Category:Images_from_Wiki_Loves_Monuments_2012_in_' + countries[ i ].replace( ' ', '_'),
+				label: countries[ i ].replace( 'the ', '' )
+			} );
+		}
+
 		for( i = 0; i < buttons.length; i++ ) {
 			button = buttons[ i ];
 			$( '<button>' ).data( 'data', {
@@ -47,7 +57,7 @@
 				} ).data( 'options', {
 					dropDelay: 3000,
 					source: 'commons'
-				} ).text( button.label ).appendTo( '#buttons' );
+				} ).text( button.label ).appendTo( $( '<li>' ).appendTo( '#buttons' ) );
 		}
 
 	}());
