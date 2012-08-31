@@ -73,9 +73,20 @@
 		polaroiderizer( $( '#display' ), data, options );
 	} );
 	$( '#buttons button' ).eq( 0 ).trigger( 'click' );
-	var bg = 'white';
+	var backgrounds = [ '', '#707070' ];
+	function pushRandomBackground() {
+		r = parseInt( Math.random() * 255, 10 );
+		b = parseInt( Math.random() * 255, 10 );
+		g = parseInt( Math.random() * 255, 10 );
+		backgrounds.push( 'rgb(' + r  + ',' + g + ',' + b + ')' );
+	}
+	for( var i = 0; i < 10; i++ ) {
+		pushRandomBackground();
+	}
+	var currentBg = 0;
 	$( '#buttons button.colorChanger' ).click( function() {
-		bg = bg === 'white' ? '#707070' : 'white';
+		currentBg = currentBg === backgrounds.length - 1 ? 0 : currentBg + 1;
+		var bg = backgrounds[ currentBg ];
 		$( '#display' ).css( 'background-color', bg );
 		$( this ).css( 'background-color', bg );
 	} );
