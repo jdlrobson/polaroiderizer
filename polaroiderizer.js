@@ -138,11 +138,6 @@ function getPhotos( $el, origData, options ) {
 			} else {
 				pages = [];
 			}
-			if( pages.length === 0 ) {
-				$el.find( '.empty' ).show();
-			} else {
-				$el.find( '.empty' ).hide();
-			}
 			$.each( pages, function( i, pic ) {
 				if ( pic.imageinfo && pic.imageinfo[ 0 ] ) {
 					var info = pic.imageinfo[ 0 ];
@@ -197,8 +192,13 @@ function getPhotos( $el, origData, options ) {
 						appendTo( $el.find( '.staging' ) );
 				}
 			}
+			if( photos.length === 0 ) {
+				$el.find( '.empty' ).show();
+			} else {
+				$el.find( '.empty' ).hide();
+				displayNext( $el, options );
+			}
 		} );
-		displayNext( $el, options );
 	} );
 }
 
