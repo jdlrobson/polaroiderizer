@@ -184,8 +184,11 @@ function getPhotos( $el, origData, options ) {
 	} );
 }
 
+var interval;
 function polaroiderizer( $el, data, options ) {
+	window.clearInterval( interval );
 	$el.empty();
+	backlog = {};
 	displayQueue = [];
 	qPos = 0;
 	// AVAILABLE OPTIONS
@@ -203,7 +206,7 @@ function polaroiderizer( $el, data, options ) {
 	$( '<div>' ).addClass( 'staging' ).hide().appendTo( $el );
 	qPos = 0;
 	getPhotos( $el, data, defaultOptions );
-	window.setInterval( function() {
+	interval = window.setInterval( function() {
 		getPhotos( $el, data, defaultOptions );
 	}, defaultOptions.pollInterval );
 	$el.find( '.status' ).html( 'Please wait while we load some photos' );
