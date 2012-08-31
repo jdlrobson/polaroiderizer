@@ -10,34 +10,35 @@
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="polaroiderizer.js"></script>
 	<script type="text/javascript">
-	function defaultSearch() {
-		polaroiderizer( $( '#display' ), {
+	(function() {
+		$( '<div id="buttons">' ).appendTo( document.body );
+		$( '<button>' ).data( 'data', {
 				iiurlwidth: '320px',
 				action: 'query',
 				gcmsort: 'timestamp', gcmdir: 'desc',
 				gcmlimit: 500, gcmtitle: 'Category:Mobile_upload',
 				generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
-			}, {
+			} ).data( 'options', {
 				dropDelay: 3000,
 				source: 'commons'
-			} );
-	}
-	$( '<div id="buttons">' ).appendTo( document.body );
-	$( '<button>' ).text( 'wlm:Mobile_Upload' ).click( function() {
-			$( '#buttons button' ).attr( 'disabled', false );
-			$( this ).attr( 'disabled', true );
-			defaultSearch();
-		} ).appendTo( '#buttons' );
-	$( '<button>' ).text( 'flickr:wikilovesmonuments' ).click( function() {
-			$( '#buttons button' ).attr( 'disabled', false );
-			$( this ).attr( 'disabled', true );
-			polaroiderizer( $( '#display' ),
+			} ).text( 'Mobile Uploads' ).appendTo( '#buttons' );
+
+		$( '<button>' ).text( 'flickr:wikilovesmonuments' ).data( 'data',
 				{
 					'tags': 'wikilovesmonuments',
 					api_key: '0a346a54dbca829015b11fcac9e70c6f',
 					per_page: 100
-				}, { source: 'flickr' } );
-		} ).appendTo( '#buttons' );
+				} ).data( 'options', { source: 'flickr' } ).appendTo( '#buttons' );
+	}());
+
+	// setup click handler
+	$( '#buttons button' ).click( function() {
+		$( '#buttons button' ).attr( 'disabled', false );
+		$( this ).attr( 'disabled', true );
+		var data = $( this ).data( 'data' );
+		var options = $( this ).data( 'options' );
+		polaroiderizer( $( '#display' ), data, options );
+	} );
 	$( '#buttons button' ).eq( 0 ).trigger( 'click' );
 	</script>
 </body>
