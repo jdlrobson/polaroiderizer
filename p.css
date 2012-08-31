@@ -37,6 +37,7 @@
 	right: 0;
 	background-color: #E1E5F3;
 	overflow:hidden;
+	background-position: left 40px;
 	background-image: url(wlm-logo-full.png);
 	background-repeat: no-repeat;
 
@@ -91,3 +92,23 @@ div.polaroid img {
 	margin-bottom: 40px;
 }
 
+@media all and (max-width:400px) {
+	div.polaroid {
+		max-width: 100px;
+		font-size: 1em;
+	}
+
+	div.polaroid img {
+		max-width: 80px;
+	}
+}
+
+@media all and (max-height:400px) {
+	div.polaroid {
+		font-size: 1em;
+	}
+
+	div.polaroid img {
+		max-height: 80px;
+	}
+}
