@@ -24,9 +24,13 @@
 	}
 	$( '<div id="buttons">' ).appendTo( document.body );
 	$( '<button>' ).text( 'wlm:Mobile_Upload' ).click( function() {
+			$( '#buttons button' ).attr( 'disabled', false );
+			$( this ).attr( 'disabled', true );
 			defaultSearch();
 		} ).appendTo( '#buttons' );
 	$( '<button>' ).text( 'flickr:wikilovesmonuments' ).click( function() {
+			$( '#buttons button' ).attr( 'disabled', false );
+			$( this ).attr( 'disabled', true );
 			polaroiderizer( $( '#display' ),
 				{
 					'tags': 'wikilovesmonuments',
@@ -34,7 +38,7 @@
 					per_page: 100
 				}, { source: 'flickr' } );
 		} ).appendTo( '#buttons' );
-	defaultSearch();
+	$( '#buttons button' ).eq( 0 ).trigger( 'click' );
 	</script>
 </body>
 </html>
