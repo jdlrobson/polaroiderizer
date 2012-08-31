@@ -1,5 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
 
+a.googleplay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+a.googleplay img {
+	width: 48px;
+}
 /* media page */
 
 .focused {
@@ -37,7 +46,7 @@
 	right: 0;
 	background-color: #E1E5F3;
 	overflow:hidden;
-	background-position: left 40px;
+	background-position: 80px 40px;
 	background-image: url(wlm-logo-full.png);
 	background-repeat: no-repeat;
 
