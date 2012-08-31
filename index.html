@@ -28,7 +28,12 @@
 			defaultSearch();
 		} ).appendTo( '#buttons' );
 	$( '<button>' ).text( 'flickr:wikilovesmonuments' ).click( function() {
-			polaroiderizer( $( '#display' ), { 'tags': 'wikilovesmonuments' }, { source: 'flickr' } );
+			polaroiderizer( $( '#display' ),
+				{
+					'tags': 'wikilovesmonuments',
+					api_key: '0a346a54dbca829015b11fcac9e70c6f',
+					per_page: 100
+				}, { source: 'flickr' } );
 		} ).appendTo( '#buttons' );
 	defaultSearch();
 	</script>

@@ -141,8 +141,6 @@ function getPhotos( $el, origData, options ) {
 		};
 	} else {
 		uri = 'http://api.flickr.com/services/rest/?method=flickr.photos.search' +
-			'&api_key=0a346a54dbca829015b11fcac9e70c6f' +
-			'&per_page=500' +
 			'&format=json' +
 		    '&jsoncallback=?';
 		handler = function( data, callback ) {
