@@ -18,50 +18,37 @@
 	<script type="text/javascript" src="polaroiderizer.js"></script>
 	<script type="text/javascript">
 	(function() {
+		var button, i,
+			buttons = [
+				{
+					category: 'Category:Images_from_Wiki_Loves_Monuments_2012', label: '2012'
+				},
+				{
+					category: 'Category:Uploaded_with_Android_WLM_App', label: '2012 (mobile)'
+				},
+				{
+					category: 'Category:Images_from_Wiki_Loves_Monuments_2011',
+					label: '2011'
+				},
+				{
+					category: 'Category:Images_from_Wiki_Loves_Monuments_2010',
+					label: '2010'
+				}
+			];
 		$( '<div id="buttons">' ).appendTo( document.body );
-		$( '<button>' ).data( 'data', {
-				iiurlwidth: '320px',
-				action: 'query',
-				gcmsort: 'timestamp', gcmdir: 'desc',
-				gcmlimit: 500, gcmtitle: 'Category:Images_from_Wiki_Loves_Monuments_2012',
-				generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
-			} ).data( 'options', {
-				dropDelay: 3000,
-				source: 'commons'
-			} ).text( '2012' ).appendTo( '#buttons' );
-
-		$( '<button>' ).data( 'data', {
-				iiurlwidth: '320px',
-				action: 'query',
-				gcmsort: 'timestamp', gcmdir: 'desc',
-				gcmlimit: 500, gcmtitle: 'Category:Uploaded_with_Android_WLM_App',
-				generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
-			} ).data( 'options', {
-				dropDelay: 3000,
-				source: 'commons'
-			} ).text( '2012 (mobile)' ).appendTo( '#buttons' );
-
+		for( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
 			$( '<button>' ).data( 'data', {
 					iiurlwidth: '320px',
 					action: 'query',
 					gcmsort: 'timestamp', gcmdir: 'desc',
-					gcmlimit: 500, gcmtitle: 'Category:Images_from_Wiki_Loves_Monuments_2011',
+					gcmlimit: 500, gcmtitle: button.category,
 					generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
 				} ).data( 'options', {
 					dropDelay: 3000,
 					source: 'commons'
-				} ).text( '2011' ).appendTo( '#buttons' );
-
-				$( '<button>' ).data( 'data', {
-						iiurlwidth: '320px',
-						action: 'query',
-						gcmsort: 'timestamp', gcmdir: 'desc',
-						gcmlimit: 500, gcmtitle: 'Category:Images_from_Wiki_Loves_Monuments_2010',
-						generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
-					} ).data( 'options', {
-						dropDelay: 3000,
-						source: 'commons'
-					} ).text( '2010' ).appendTo( '#buttons' );
+				} ).text( button.label ).appendTo( '#buttons' );
+		}
 
 	}());
 
