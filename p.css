@@ -78,6 +78,7 @@ a.googleplay img {
 	margin:10px;
 	right: -250px;
 	-webkit-transition: all 0.3s linear;
+	z-index: 2000;
 }
 
 #buttons:hover {
