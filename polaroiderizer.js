@@ -137,6 +137,7 @@ function getPhotos( $el, origData, options ) {
 					} );
 				}
 			} );
+			photos = photos.reverse(); // hack to get sort order we want in chrome
 			callback( photos );
 		};
 	} else {
