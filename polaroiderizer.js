@@ -6,7 +6,12 @@ A fork of the original ( http://polaroiderizer.com/) by Phil Hawksworth (http://
 
 usage:
 *** polaroiderizer( element, data, options )
-***
+flickr usage:
+*** polaroiderizer( $('#container' ), {
+-                                       'tags': 'wikilovesmonuments',
+-                                       api_key: '----',
+-                                       per_page: 100
+-                               }, { source: 'flickr' } );
 ***
 *******************************************************************/
 
