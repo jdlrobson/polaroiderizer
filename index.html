@@ -16,19 +16,46 @@
 				iiurlwidth: '320px',
 				action: 'query',
 				gcmsort: 'timestamp', gcmdir: 'desc',
+				gcmlimit: 500, gcmtitle: 'Category:Images_from_Wiki_Loves_Monuments_2012',
+				generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
+			} ).data( 'options', {
+				dropDelay: 3000,
+				source: 'commons'
+			} ).text( '2012' ).appendTo( '#buttons' );
+
+		$( '<button>' ).data( 'data', {
+				iiurlwidth: '320px',
+				action: 'query',
+				gcmsort: 'timestamp', gcmdir: 'desc',
 				gcmlimit: 500, gcmtitle: 'Category:Mobile_upload',
 				generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
 			} ).data( 'options', {
 				dropDelay: 3000,
 				source: 'commons'
-			} ).text( 'Mobile Uploads' ).appendTo( '#buttons' );
+			} ).text( '2012 (mobile)' ).appendTo( '#buttons' );
 
-		$( '<button>' ).text( 'flickr:wikilovesmonuments' ).data( 'data',
-				{
-					'tags': 'wikilovesmonuments',
-					api_key: '0a346a54dbca829015b11fcac9e70c6f',
-					per_page: 100
-				} ).data( 'options', { source: 'flickr' } ).appendTo( '#buttons' );
+			$( '<button>' ).data( 'data', {
+					iiurlwidth: '320px',
+					action: 'query',
+					gcmsort: 'timestamp', gcmdir: 'desc',
+					gcmlimit: 500, gcmtitle: 'Category:Images_from_Wiki_Loves_Monuments_2011',
+					generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
+				} ).data( 'options', {
+					dropDelay: 3000,
+					source: 'commons'
+				} ).text( '2011' ).appendTo( '#buttons' );
+
+				$( '<button>' ).data( 'data', {
+						iiurlwidth: '320px',
+						action: 'query',
+						gcmsort: 'timestamp', gcmdir: 'desc',
+						gcmlimit: 500, gcmtitle: 'Category:Images_from_Wiki_Loves_Monuments_2010',
+						generator: 'categorymembers', format: 'json', prop: 'imageinfo', iiprop: 'url|user'
+					} ).data( 'options', {
+						dropDelay: 3000,
+						source: 'commons'
+					} ).text( '2010' ).appendTo( '#buttons' );
+
 	}());
 
 	// setup click handler
