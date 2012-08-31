@@ -133,7 +133,17 @@ function getPhotos( $el, origData, options ) {
 		uri = 'http://commons.wikimedia.org/w/api.php?callback=?';
 		handler = function( data, callback ) {
 			var photos = [];
-			$.each( data.query.pages, function( i, pic ) {
+			if( data && data.query && data.query.pages ) {
+				pages = data.query.pages;
+			} else {
+				pages = [];
+			}
+			if( pages.length === 0 ) {
+				$el.find( '.empty' ).show();
+			} else {
+				$el.find( '.empty' ).hide();
+			}
+			$.each( pages, function( i, pic ) {
 				if ( pic.imageinfo && pic.imageinfo[ 0 ] ) {
 					var info = pic.imageinfo[ 0 ];
 					photos.push( {
@@ -212,6 +222,7 @@ function polaroiderizer( $el, data, options ) {
 	$.extend( defaultOptions, options );
 	$( '<div>' ).addClass( 'status' ).appendTo( $el );
 	$( '<div>' ).addClass( 'staging' ).hide().appendTo( $el );
+	$( '<div>' ).addClass( 'empty' ).text( 'No images found :-(' ).hide().appendTo( $el );
 	qPos = 0;
 	getPhotos( $el, data, defaultOptions );
 	interval = window.setInterval( function() {

@@ -52,6 +52,16 @@ a.googleplay img {
 
 }
 
+#display .empty {
+	font-size: 4em;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
 #buttons {
 	position: absolute;
 	top: 0;
