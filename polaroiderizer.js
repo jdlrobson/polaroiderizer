@@ -31,7 +31,9 @@ $.fn.addPolaroid = function( el, options ) {
 		timeout;
 
 	$parent.find( 'div.plain' ).remove();
-	num = num - options.rotationRange / 2;
+	if ( leftSide ) {
+		num = -num;
+	}
 	rotateStr = 'rotate(' + num + 'deg)';
 	style = {
 		'-webkit-transform': rotateStr,
