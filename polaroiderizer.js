@@ -68,9 +68,7 @@ $.fn.addPolaroid = function( el, options ) {
 
 	// animate photo opacity and into view
 	function animateFrame() {
-		$frame.css( 'z-index', '' ).animate( {
-			top: $parent.height() + 'px', opacity: '0'
-			}, options.dropDuration, function() {
+		$frame.css( 'z-index', '' ).animate( options.dropAnimation, options.dropDuration, function() {
 				currentStack[ currentStack.indexOf( $photo.attr( 'src' ) ) ] = null; // hacky. don't care. does job.
 				$frame.remove();
 			} );
@@ -218,6 +216,10 @@ function polaroiderizer( $el, data, options ) {
 	// AVAILABLE OPTIONS
 	var defaultOptions = {
 		dropDelay: 3000,
+		dropAnimation: { // default animation drops each polaroid to bottom of page
+			top: $el.height() + 'px',
+			opacity: '0'
+		},
 		fadeDuration: 1000,
 		dropDuration: 10000,
 		source: 'commons',
