@@ -9,7 +9,7 @@ body {
 	margin: 0;
 }
 
-#display {
+.polaroiderizer-container {
 	clear: both;
 	border: solid 1px #000;
 	background-color: white;

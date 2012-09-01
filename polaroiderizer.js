@@ -207,6 +207,7 @@ function polaroiderizer( $el, data, options ) {
 	if ( $el.nodeType ) { // allow normal dom elements to be passed as arguments
 		$el = $( el );
 	}
+	$el.addClass( 'polaroiderizer-container' );
 	window.clearInterval( interval );
 	$el.empty();
 	backlog = {};
