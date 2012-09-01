@@ -1,0 +1,92 @@
+html,
+body {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+}
+
+#display {
+	clear: both;
+	border: solid 1px #000;
+	background-color: white;
+	overflow: hidden;
+	background-position: 80px 40px;
+	background-image: url(wlm-logo-full.png);
+	background-repeat: no-repeat;
+}
+
+a.googleplay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+a.googleplay img {
+	width: 48px;
+}
+
+div img{
+	border-style:none;
+}
+
+
+#buttons {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: center;
+	list-style: none;
+	min-width:300px;
+	margin:10px;
+	position: absolute;
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+	column-count: 2;
+	min-width:300px;
+	margin:10px;
+	right: -250px;
+	-webkit-transition: all 0.3s linear;
+	z-index: 2000;
+}
+
+#buttons:hover {
+	right: 0;
+}
+#buttons button {
+	width:100%;
+	opacity:0.9;
+	border:1px solid gray;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background:#E1E5F3;
+	margin-top:2px;
+	margin-bottom:2px;
+	padding:2px;
+	transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-webkit-transition:background-color 0.5s;
+}
+#buttons button:disabled, #buttons button:hover {
+	opacity:1;
+	background:#BFC3CF;
+	color:black;
+}
+#buttons button:disabled {
+	font-weight:bold;
+}
+
+#buttons button.colorChanger {
+	border: solid 1px black;
+	border-radius: 0;
+	width: 30px;
+	height: 30px;
+	text-indent: -999px;
+	overflow: hidden;
+	background-color: white;
+	cursor: pointer;
+}
