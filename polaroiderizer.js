@@ -19,7 +19,7 @@ flickr usage:
 var displayQueue = [],
 	backlog = {}, // backlog of photos that we currently have in memory where keys are image url
 	qPos = 0, timer = null, zIndex = 4,
-	leftSide = true, // flag to make sure alternate between left and right side
+	columnNumber = 0, // flag to make sure alternate between left and right side
 	currentStack = [];
 
 $.fn.addPolaroid = function( el, options ) {
@@ -27,9 +27,8 @@ $.fn.addPolaroid = function( el, options ) {
 		$el = $( el ),
 		rotateStr, style, num = parseInt( Math.random() * ( options.rotationRange ), 10 ),
 		$frame, $photo,
-		w, x, y,
+		w, x, y, leftSide = options.columns - columnNumber < options.columns / 2, // TODO: deal with middle column which is neither left or right
 		timeout;
-
 	$parent.find( 'div.plain' ).remove();
 	if ( leftSide ) {
 		num = -num;
@@ -54,11 +53,12 @@ $.fn.addPolaroid = function( el, options ) {
 	// set starting point
 	w = $parent.width();
 	y = $frame.height();
-	x = 40 + Math.floor( Math.random() * (  ( w / 2) - $frame.width() - 80 ) );
-	if ( !leftSide ) {
-		x += w / 2;
+	x = 40 + Math.floor( Math.random() * (  ( w / options.columns ) - $frame.width() - 80 ) );
+	x += ( columnNumber * ( w / options.columns ) );
+	columnNumber += 1;
+	if ( columnNumber > options.columns - 1 ) {
+		columnNumber = 0;
 	}
-	leftSide = !leftSide;
 
 	$frame.css( {top: '-'+y+'px', left: x+'px'} );
 
@@ -216,6 +216,7 @@ function polaroiderizer( $el, data, options ) {
 		dropDuration: 10000,
 		source: 'commons',
 		rotationRange: 30,
+		columns: 'auto',
 		pollInterval: 1000 * 60 * 10 // every 10 minutes look for more
 	};
 	options = options || {};
@@ -224,6 +225,9 @@ function polaroiderizer( $el, data, options ) {
 	$( '<div>' ).addClass( 'staging' ).hide().appendTo( $el );
 	$( '<div>' ).addClass( 'empty' ).text( 'No images found :-(' ).hide().appendTo( $el );
 	qPos = 0;
+	if ( defaultOptions.columns === 'auto' ) {
+		defaultOptions.columns = parseInt( $el.width() / 320, 10 );
+	}
 	getPhotos( $el, data, defaultOptions );
 	interval = window.setInterval( function() {
 		getPhotos( $el, data, defaultOptions );
