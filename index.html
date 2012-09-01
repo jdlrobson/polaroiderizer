@@ -20,6 +20,7 @@
 	<script type="text/javascript">
 	(function() {
 		var button, i, countries,
+			$btn,
 			buttons = [
 				{
 					category: 'Category:Images_from_Wiki_Loves_Monuments_2012', label: '2012'
@@ -49,7 +50,9 @@
 
 		for( i = 0; i < buttons.length; i++ ) {
 			button = buttons[ i ];
-			$( '<button class="query">' ).data( 'data', {
+			$( '<button class="query">' ).
+				addClass( window.location.hash.substr( 1 ) === button.label ? 'active' : '' ).
+				data( 'data', {
 					iiurlwidth: '320px',
 					action: 'query',
 					gcmsort: 'timestamp', gcmdir: 'desc',
@@ -67,13 +70,16 @@
 
 	// setup click handler
 	$( '#buttons button.query' ).click( function() {
+		window.location.hash = $( this ).text();
 		$( '#buttons button.query' ).attr( 'disabled', false );
 		$( this ).attr( 'disabled', true );
 		var data = $( this ).data( 'data' );
 		var options = $( this ).data( 'options' );
 		polaroiderizer( $( '#display' ), data, options );
 	} );
-	$( '#buttons button' ).eq( 0 ).trigger( 'click' );
+	$btn = $( '#buttons button.active' )[ 0 ] ? $( '#buttons button.active' ).eq( 0 ) : $( '#buttons button' ).eq( 0 );
+
+	$btn.trigger( 'click' );
 	var backgrounds = [ '', '#707070' ];
 	function pushRandomBackground() {
 		r = parseInt( Math.random() * 255, 10 );
