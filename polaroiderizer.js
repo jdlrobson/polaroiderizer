@@ -39,7 +39,8 @@ $.fn.addPolaroid = function( el, options ) {
 		'-moz-transform': rotateStr,
 		'-o-transform': rotateStr,
 		'-ms-transform': rotateStr,
-		'transform': rotateStr
+		'transform': rotateStr,
+		'max-width': options.maxImageWidth + 'px'
 	};
 	$frame = $( '<div class="polaroid"></div>' ).css( style ).append( el );
 	$photo = $el.find( 'img' );
@@ -188,6 +189,7 @@ function getPhotos( $el, origData, options ) {
 				if ( !backlog[ photo.src ] ) {
 					backlog[ photo.src ] = true;
 					$('<img>' ).attr( 'src', photo.src ).data( 'author', photo.author || '' ).data( 'link', photo.link ).attr( 'title', photo.title ).
+						css( 'max-width', options.maxImageWidth + 'px' ).
 						load( loadNewImage ).
 						appendTo( $el.find( '.staging' ) );
 				}
@@ -221,6 +223,7 @@ function polaroiderizer( $el, data, options ) {
 		source: 'commons',
 		rotationRange: 30,
 		columns: 'auto',
+		maxImageWidth: 'auto',
 		pollInterval: 1000 * 60 * 10 // every 10 minutes look for more
 	};
 	options = options || {};
@@ -231,6 +234,9 @@ function polaroiderizer( $el, data, options ) {
 	qPos = 0;
 	if ( defaultOptions.columns === 'auto' ) {
 		defaultOptions.columns = parseInt( $el.width() / 320, 10 );
+	}
+	if ( defaultOptions.maxImageWidth === 'auto' ) {
+		defaultOptions.maxImageWidth = parseInt( $el.width() / defaultOptions.columns, 10 );
 	}
 	getPhotos( $el, data, defaultOptions );
 	interval = window.setInterval( function() {
