@@ -140,12 +140,14 @@ function getPhotos( $el, origData, options ) {
 			$.each( pages, function( i, pic ) {
 				if ( pic.imageinfo && pic.imageinfo[ 0 ] ) {
 					var info = pic.imageinfo[ 0 ];
-					photos.push( {
-						src: pic.imageinfo[ 0 ].thumburl,
-						link: pic.imageinfo[ 0 ].descriptionurl,
-						title: pic.title,
-						author: info.user ? 'by ' + info.user : ''
-					} );
+					if( pic.imageinfo[ 0 ].thumburl) {
+						photos.push( {
+							src: pic.imageinfo[ 0 ].thumburl,
+							link: pic.imageinfo[ 0 ].descriptionurl,
+							title: pic.title,
+							author: info.user ? 'by ' + info.user : ''
+						} );
+					}
 				}
 			} );
 			photos = photos.reverse(); // hack to get sort order we want in chrome
