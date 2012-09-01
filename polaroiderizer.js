@@ -204,6 +204,9 @@ function getPhotos( $el, origData, options ) {
 
 var interval;
 function polaroiderizer( $el, data, options ) {
+	if ( $el.nodeType ) { // allow normal dom elements to be passed as arguments
+		$el = $( el );
+	}
 	window.clearInterval( interval );
 	$el.empty();
 	backlog = {};
