@@ -73,7 +73,7 @@ $.fn.addPolaroid = function( el, options ) {
 				$frame.remove();
 			} );
 	}
-	$frame.animate( { top: '15px' }, 400 );
+	$frame.animate( { top: '15px' }, options.initialDropDuration );
 	$photo.animate( { opacity: '1' }, options.fadeDuration,
 		function( picture ) {
 			// animate slowly out of view and opacity of entire object.
@@ -222,6 +222,7 @@ function polaroiderizer( $el, data, options ) {
 			top: $el.height() + 'px',
 			opacity: '0'
 		},
+		initialDropDuration: 0,
 		fadeDuration: 1000,
 		dropDuration: 10000,
 		source: 'commons',
