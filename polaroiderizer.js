@@ -128,7 +128,11 @@ function displayNext( $el, options ){
 // Get photos from the flickr or commons API and add them to the display queue.
 function getPhotos( $el, origData, options ) {
 	var uri, handler, source = options.source;
-	if ( source === 'commons' ) {
+	if ( origData instanceof Array ) {
+		handler = function( data, callback ) {
+			callback( data );
+		};
+	} else if ( source === 'commons' ) {
 		uri = 'http://commons.wikimedia.org/w/api.php?callback=?';
 		handler = function( data, callback ) {
 			var photos = [];
@@ -169,7 +173,12 @@ function getPhotos( $el, origData, options ) {
 			callback( photos );
 		};
 	}
-	$.getJSON( uri, origData || {}, function( data ) {
+	get = uri ? function( callback ) {
+			$.getJSON( uri, origData || {}, callback );
+		} : function( callback ) {
+			callback( origData );
+		};
+	get( function( data ) {
 		handler( data, function( photos ) {
 			var i, photo;
 			function loadNewImage() {
