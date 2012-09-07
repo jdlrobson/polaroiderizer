@@ -7,6 +7,9 @@ body {
 	right: 0;
 	bottom: 0;
 	margin: 0;
+	background-position: 80px 40px;
+	background-image: url(tilewoodgrain.jpg);
+	background-repeat: repeat;
 }
 
 .polaroiderizer-container {
@@ -15,7 +18,8 @@ body {
 	background-color: white;
 	overflow: hidden;
 	background-position: 80px 40px;
-	background-image: url(wlm-logo-full.png);
+	background-color: transparent;
+	background-image: url(WLM%200820%20US-16.png);
 	background-repeat: no-repeat;
 }
 
